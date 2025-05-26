@@ -5,7 +5,7 @@ import learningReflex2.styles.styles as styles
 from learningReflex2.styles.colors import Colors, TextColors
 from learningReflex2.styles.fonts import Fonts
 
-def header() -> rx.Component:
+def header(details) -> rx.Component:
     return rx.vstack(
         rx.hstack(
             rx.avatar(
@@ -29,15 +29,18 @@ def header() -> rx.Component:
             ),
             spacing="4"
         ),
-        rx.flex(
-            info_text(text="Name", body="Jimmy Valladares"),
-            rx.spacer(),
-            info_text(text="Phone", body="+34 666 666 666"),
-            rx.spacer(),
-            info_text(text="Location", body="Madrid, Spain"),
-            width="100%",
-        ),
-        rx.text("""
+        rx.cond(
+            details,
+            rx.container(
+                rx.flex(
+                    info_text(text="Name", body="Jimmy Valladares"),
+                    rx.spacer(),
+                    info_text(text="Phone", body="+34 666 666 666"),
+                    rx.spacer(),
+                    info_text(text="Location", body="Madrid, Spain"),
+                    width="100%",
+                ),
+                rx.text("""
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
                 when an unknown printer took a galley of type and scrambled it to make a type specimen book.
@@ -46,6 +49,8 @@ def header() -> rx.Component:
                 center=True,
                 font_size=styles.Size.MEDIUM.value,
                 ),
+            ),    
+        ),
         spacing="3",
         align_items="start",
     )
