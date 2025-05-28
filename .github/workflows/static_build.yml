@@ -6,7 +6,7 @@ on:
       - main
 jobs:
   build:
-    if: github.repsoitory == 'jotavalla/learningReflex2'
+    if: github.repository == 'jotavalla/learningReflex2'
     runs-on: ubuntu-latest
 
     permissions:
