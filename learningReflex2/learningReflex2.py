@@ -3,6 +3,8 @@ import learningReflex2.styles.styles as styles
 from learningReflex2.pages.index import index
 from learningReflex2.pages.courses import courses
 
+class State(rx.State):
+    pass
 
 app = rx.App(
     style=styles.GLOBAL_STYLES,
